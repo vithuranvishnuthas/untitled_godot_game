@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Area2D
+
+export(int) var boost_value = 10
+
+func _on_AttackBoost_body_entered(body):
+	if body.name == \"Player\":
+		body.weapon.damage += boost_value
+		print(body.weapon.damage)
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 16 )
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/attack_boost.png-27773d7caebe68a4b8f821fec296579f.stex"
+
+[node name="AttackBoost" type="Area2D"]
+script = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 3 )
+[connection signal="body_entered" from="." to="." method="_on_AttackBoost_body_entered"]

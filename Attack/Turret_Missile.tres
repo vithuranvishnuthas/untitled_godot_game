@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Attack/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Attack/turret_missile.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Turret Missile"
+texture = ExtResource( 2 )
+damage = 10
+attack_speed = 0.9
+moving_speed = 250.0

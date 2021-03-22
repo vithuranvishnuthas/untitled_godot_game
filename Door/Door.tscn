@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Door/door.png" type="Texture" id=1]
+[ext_resource path="res://Door/Door.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftCollisionShape:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 1, -36.5, -60, -65, -128.5, -65.5, -129, 63.5, -58.5, 65, 2.5, 35.5 ), PoolVector2Array( -8, -38, -60, -65, -128.5, -65.5, -129, 63.5, -58.5, 65, -8.5, 43 ), PoolVector2Array( -34, -50, -60, -65, -128.5, -65.5, -129, 63.5, -58.5, 65, -33.5, 54 ), PoolVector2Array( -49, -59.5, -60, -65, -128.5, -65.5, -129, 63.5, -58.5, 65, -49.5, 60 ), PoolVector2Array( -74, -45, -84, -65, -128.5, -65.5, -129, 63.5, -85, 65, -76, 46 ), PoolVector2Array( -102.5, -49, -107, -64, -128.5, -65.5, -129, 63.5, -105.5, 63, -102.5, 57 ), PoolVector2Array( -114, -44, -118, -65, -128.5, -65.5, -129, 63.5, -119, 64, -115.5, 46 ), PoolVector2Array( -117.5, -47, -118, -65, -128.5, -65.5, -129, 63.5, -121.5, 64, -118.5, 43 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RightCollisionShape:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 3, -36.5, 1.5, 35.5, 61, 64, 127.5, 63.5, 129, -64.5, 60.5, -65.5 ), PoolVector2Array( 7.5, -36.5, 6.5, 37, 61, 64, 127.5, 63.5, 129, -64.5, 60.5, -65.5 ), PoolVector2Array( 35, -53.5, 35, 51, 61, 64, 127.5, 63.5, 129, -64.5, 60.5, -65.5 ), PoolVector2Array( 52, -61, 52, 58.5, 64.5, 66, 127.5, 63.5, 129, -64.5, 63.5, -66.5 ), PoolVector2Array( 72.5, -47, 73, 43.5, 82.5, 64.5, 127.5, 63.5, 129, -64.5, 85, -66 ), PoolVector2Array( 100.5, -55.5, 100.5, 54, 107, 64, 127.5, 63.5, 129, -64.5, 108, -64.5 ), PoolVector2Array( 114, -46.5, 113.5, 46, 121.5, 63, 127.5, 63.5, 129, -64.5, 118.5, -64.5 ), PoolVector2Array( 118.5, -48, 119, 48.5, 121.5, 63, 127.5, 63.5, 129, -64.5, 122, -64 ) ]
+}
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Open = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 8
+
+[node name="LeftCollisionShape" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 1, -36.5, -60, -65, -128.5, -65.5, -129, 63.5, -58.5, 65, 2.5, 35.5 )
+
+[node name="RightCollisionShape" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 3, -36.5, 1.5, 35.5, 61, 64, 127.5, 63.5, 129, -64.5, 60.5, -65.5 )
